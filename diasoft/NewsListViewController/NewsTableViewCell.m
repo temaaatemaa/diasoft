@@ -26,7 +26,7 @@
     self.postTextLabel.text = post.text;
     self.likesLabel.text = post.countOfLikes.stringValue;
     self.commentsLabel.text = post.countOfComments.stringValue;
-    self.repostsLabel.text = post.countOfComments.stringValue;
+    self.repostsLabel.text = post.countOfReposts.stringValue;
     
     self.avatarImageView.layer.cornerRadius = 25;
     self.avatarImageView.layer.masksToBounds = YES;
