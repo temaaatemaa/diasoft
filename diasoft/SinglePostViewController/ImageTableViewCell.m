@@ -20,18 +20,17 @@
     NSNumber *newImageWidth = @(self.contentView.frame.size.width);
     NSNumber *scale = @(imageWidth.floatValue / newImageWidth.floatValue);
     NSNumber *newHeight = @(imageHeight.floatValue / scale.floatValue);
-    self.postImage.image = [UIImage imageWithImage:[UIImage imageNamed:@"noPhoto"] forSize:CGSizeMake(newImageWidth.floatValue, newHeight.floatValue)];
+    
+    __block CGSize newSize = CGSizeMake(newImageWidth.floatValue,newHeight.floatValue);
+    UIImage *defaultImage = [UIImage imageNamed:@"noPhoto"];
+    
+    self.postImage.image = [UIImage imageWithImage:defaultImage forSize:newSize];
     
     [networkService downloadPhotoWithURL:fotoInformation[@"url"] withComplitionBlock:^(id  _Nullable image) {
         
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            UIImage *sizedImage = [UIImage imageWithImage:image
-                                                 forSize:CGSizeMake(newImageWidth.floatValue,
-                                                                    newHeight.floatValue)];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.postImage.image = sizedImage;
-            });
-        });
+        [UIImage resizeImage:image forSize:newSize OnGlobalQueueWithCmplitionOnMainThread:^(id  _Nullable image) {
+            self.postImage.image = image;
+        }];
         
     }];
 }

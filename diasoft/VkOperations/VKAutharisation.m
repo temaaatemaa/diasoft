@@ -8,7 +8,7 @@
 
 #import "VKAutharisation.h"
 #import <AuthenticationServices/AuthenticationServices.h>
-
+#import <SafariServices/SafariServices.h>
 
 static NSString *const APP_ID = @"6642532";
 static NSString *const AuthVKURL = @"https://oauth.vk.com/authorize";
@@ -17,9 +17,17 @@ static NSString *const RedirectVKURL = @"vk6642532://authorize";
 NSString *const KeyForToken = @"KeyForToken";
 
 
+API_AVAILABLE(ios(12.0))
 @interface VKAutharisation()
 
 @property (nonatomic, strong) ASWebAuthenticationSession *session;
+
+@end
+
+
+@interface VKAutharisation()
+
+@property (nonatomic, strong) SFAuthenticationSession *sessionSF;
 
 @end
 
@@ -35,10 +43,9 @@ NSString *const KeyForToken = @"KeyForToken";
                            RedirectVKURL];
     NSURL *url = [NSURL URLWithString:urlString];
 
-    self.session = [[ASWebAuthenticationSession alloc]initWithURL:url callbackURLScheme:RedirectVKURL completionHandler:^(NSURL * _Nullable callbackURL, NSError * _Nullable error) {
-        
+    void (^comlitionBlock)(NSURL * _Nullable, NSError * _Nullable) = ^(NSURL * _Nullable callbackURL, NSError * _Nullable error){
         NSString *string = [callbackURL absoluteString];
-
+        
         if (!string)
         {
             [self.delegate autharisationDidCancel:self];
@@ -53,9 +60,17 @@ NSString *const KeyForToken = @"KeyForToken";
             
             [self.delegate autharisationDidDone:self withToken:accessToken];
         }
-    }];
+    };
+    
+    if (@available(iOS 12.0, *)) {
+        self.session = [[ASWebAuthenticationSession alloc]initWithURL:url callbackURLScheme:RedirectVKURL completionHandler:comlitionBlock];
+        [self.session start];
+    } else {
+        self.sessionSF = [[SFAuthenticationSession alloc]initWithURL:url callbackURLScheme:RedirectVKURL completionHandler:comlitionBlock];
+        [self.sessionSF start];
+    }
 
-    [self.session start];
+    
 }
 
 + (NSString *)token

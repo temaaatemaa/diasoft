@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NetworkService : NSObject
 
-
 - (void)downloadPhotoWithURL:(NSString *)url withComplitionBlock:(nullable void (^)(id _Nullable image))complitionBlock;
 
 @end

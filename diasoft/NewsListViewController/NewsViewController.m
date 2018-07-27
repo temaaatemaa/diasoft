@@ -26,7 +26,7 @@ static NSString *const NameForLogoutButton = @"Выйти";
 static CGFloat const EstimatedRowHeight = 200.f;
 static NSUInteger const PreviewTextCountOfLetters = 200;
 
-@interface NewsViewController ()<VKAutharisationDelegate,UITableViewDelegate,UITableViewDataSource,PostsManagerDelegate>
+@interface NewsViewController ()<VKAutharisationDelegate, UITableViewDelegate, UITableViewDataSource, PostsManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *vkAutharisationButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,7 +38,6 @@ static NSUInteger const PreviewTextCountOfLetters = 200;
 @property (nonatomic, copy) NSArray *postsArray;
 
 @property (nonatomic, assign) BOOL isLogin;
-
 
 @end
 
@@ -113,7 +112,6 @@ static NSUInteger const PreviewTextCountOfLetters = 200;
     if ([self.vkAutharisationButton.title isEqualToString:NameForAuthButton])
     {
         [self.vkAutharisation autharisation];
-        [self.tableView reloadData];
     }
     else
     {
@@ -134,6 +132,7 @@ static NSUInteger const PreviewTextCountOfLetters = 200;
     if ([self.vkAutharisationButton.title isEqualToString:NameForAuthButton])
     {
         [self.vkAutharisationButton setTitle:NameForLogoutButton];
+        [self.tableView reloadData];
         [self.postManager getPosts];
     }
     else
@@ -147,7 +146,7 @@ static NSUInteger const PreviewTextCountOfLetters = 200;
 
 - (void)setupRefreshControlOnTop
 {
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    UIRefreshControl *refresh = [UIRefreshControl new];
     [refresh addTarget:self action:@selector(getNewPosts) forControlEvents:UIControlEventValueChanged];
     self.tableView.refreshControl = refresh;
 }
@@ -235,7 +234,11 @@ static NSUInteger const PreviewTextCountOfLetters = 200;
         tableView.backgroundView = nil;
         return 1;
     }
-    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 300, CGRectGetWidth(self.view.frame), 50)];
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:
+                             CGRectMake(0,
+                                        CGRectGetMidY(self.view.frame),
+                                        CGRectGetWidth(self.view.frame),
+                                        50)];
     messageLabel.text = @"Пожалуйста, залогинтесь, чтобы смотреть новости!";
     messageLabel.numberOfLines = 0;
     messageLabel.textAlignment = NSTextAlignmentCenter;
