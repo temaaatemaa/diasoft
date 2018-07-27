@@ -15,6 +15,7 @@ extern NSString *const KeyForUserID;
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic,copy) NSCache *cash;
 
 @end
 

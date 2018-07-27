@@ -100,26 +100,12 @@
 			children = (
 				239C1C55210871AF00A11E65 /* AppDelegate.h */,
 				239C1C56210871AF00A11E65 /* AppDelegate.m */,
-				239C1C7F2109D5CD00A11E65 /* UIImage+Size.h */,
-				239C1C802109D5CD00A11E65 /* UIImage+Size.m */,
-				239C1C58210871AF00A11E65 /* NewsViewController.h */,
-				239C1C59210871AF00A11E65 /* NewsViewController.m */,
-				239C1C732108CA5A00A11E65 /* NewsTableViewCell.h */,
-				239C1C742108CA5A00A11E65 /* NewsTableViewCell.m */,
-				239C1C6B2108750300A11E65 /* VKAutharisation.h */,
-				239C1C6C2108750300A11E65 /* VKAutharisation.m */,
-				239C1C762108CF0900A11E65 /* VKRequest.h */,
-				239C1C772108CF0900A11E65 /* VKRequest.m */,
-				239C1C792108CFDE00A11E65 /* PostsManager.h */,
-				239C1C7A2108CFDE00A11E65 /* PostsManager.m */,
-				239C1C7C2108DC9B00A11E65 /* Post.h */,
-				239C1C7D2108DC9B00A11E65 /* Post.m */,
-				239C1C822109ED4D00A11E65 /* NetworkService.h */,
-				239C1C832109ED4D00A11E65 /* NetworkService.m */,
-				239C1C85210A1F7200A11E65 /* SinglePostViewController.h */,
-				239C1C86210A1F7200A11E65 /* SinglePostViewController.m */,
-				239C1C88210A227D00A11E65 /* ImageTableViewCell.h */,
-				239C1C89210A227D00A11E65 /* ImageTableViewCell.m */,
+				23FC28C5210B24C2005C47E7 /* UIImage Extensions */,
+				23FC28C4210B249B005C47E7 /* NewsListViewController */,
+				23FC28C3210B2483005C47E7 /* SinglePostViewController */,
+				23FC28C0210B2443005C47E7 /* VkOperations */,
+				23FC28C2210B246A005C47E7 /* Post */,
+				23FC28C1210B2459005C47E7 /* NetworkService */,
 				239C1C5B210871AF00A11E65 /* Main.storyboard */,
 				239C1C5E210871B300A11E65 /* Assets.xcassets */,
 				239C1C60210871B300A11E65 /* LaunchScreen.storyboard */,
@@ -137,6 +123,68 @@
 				94CC788BCDD9FF3365350D1E /* libPods-diasoft.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23FC28C0210B2443005C47E7 /* VkOperations */ = {
+			isa = PBXGroup;
+			children = (
+				239C1C6B2108750300A11E65 /* VKAutharisation.h */,
+				239C1C6C2108750300A11E65 /* VKAutharisation.m */,
+				239C1C762108CF0900A11E65 /* VKRequest.h */,
+				239C1C772108CF0900A11E65 /* VKRequest.m */,
+			);
+			path = VkOperations;
+			sourceTree = "<group>";
+		};
+		23FC28C1210B2459005C47E7 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				239C1C822109ED4D00A11E65 /* NetworkService.h */,
+				239C1C832109ED4D00A11E65 /* NetworkService.m */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		23FC28C2210B246A005C47E7 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				239C1C792108CFDE00A11E65 /* PostsManager.h */,
+				239C1C7A2108CFDE00A11E65 /* PostsManager.m */,
+				239C1C7C2108DC9B00A11E65 /* Post.h */,
+				239C1C7D2108DC9B00A11E65 /* Post.m */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		23FC28C3210B2483005C47E7 /* SinglePostViewController */ = {
+			isa = PBXGroup;
+			children = (
+				239C1C85210A1F7200A11E65 /* SinglePostViewController.h */,
+				239C1C86210A1F7200A11E65 /* SinglePostViewController.m */,
+				239C1C88210A227D00A11E65 /* ImageTableViewCell.h */,
+				239C1C89210A227D00A11E65 /* ImageTableViewCell.m */,
+			);
+			path = SinglePostViewController;
+			sourceTree = "<group>";
+		};
+		23FC28C4210B249B005C47E7 /* NewsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				239C1C58210871AF00A11E65 /* NewsViewController.h */,
+				239C1C59210871AF00A11E65 /* NewsViewController.m */,
+				239C1C732108CA5A00A11E65 /* NewsTableViewCell.h */,
+				239C1C742108CA5A00A11E65 /* NewsTableViewCell.m */,
+			);
+			path = NewsListViewController;
+			sourceTree = "<group>";
+		};
+		23FC28C5210B24C2005C47E7 /* UIImage Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				239C1C7F2109D5CD00A11E65 /* UIImage+Size.h */,
+				239C1C802109D5CD00A11E65 /* UIImage+Size.m */,
+			);
+			path = "UIImage Extensions";
 			sourceTree = "<group>";
 		};
 		DFF9BAF3BB3FA0A1F909760C /* Pods */ = {

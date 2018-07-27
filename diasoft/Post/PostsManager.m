@@ -65,7 +65,6 @@
     if (withNextFrom)
     {
         parametrs[@"start_from"] = self.nextFromValue;
-        NSLog(@"%@", parametrs[@"start_from"]);
     }
 
     [self.vkRequest requestForMethodName:methodName withParametrs:[parametrs copy] withComplitionBlock:^(id  _Nullable responseObject) {

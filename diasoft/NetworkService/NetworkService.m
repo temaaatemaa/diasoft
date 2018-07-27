@@ -7,7 +7,7 @@
 //
 
 #import "NetworkService.h"
-
+#import "AppDelegate.h"
 
 @interface NetworkService()
 
@@ -23,7 +23,7 @@
     self = [super init];
     if (self)
     {
-        _cash = [[NSCache alloc] init];
+        _cash = ((AppDelegate *)[UIApplication sharedApplication].delegate).cash;
     }
     return self;
 }
