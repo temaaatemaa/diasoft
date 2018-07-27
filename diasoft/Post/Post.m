@@ -50,7 +50,7 @@
     NSDate *updatetimestamp = [NSDate dateWithTimeIntervalSince1970:timestamp];
     
     NSDateFormatter *df_local = [[NSDateFormatter alloc] init];
-    [df_local setTimeZone:[NSTimeZone timeZoneWithName:@"MSC"]];
+    [df_local setTimeZone:[NSTimeZone systemTimeZone]];
     [df_local setDateFormat:@"HH:mm:ss dd.MM.yyyy"];
     
     NSString *ts_local_string = [df_local stringFromDate:updatetimestamp];
