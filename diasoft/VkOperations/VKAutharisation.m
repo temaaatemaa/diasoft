@@ -15,7 +15,6 @@ static NSString *const AuthVKURL = @"https://oauth.vk.com/authorize";
 static NSString *const RedirectVKURL = @"vk6642532://authorize";
 
 NSString *const KeyForToken = @"KeyForToken";
-NSString *const KeyForUserID = @"KeyForUserID";
 
 
 @interface VKAutharisation()

@@ -45,7 +45,14 @@
         
         self.postPhotoImageView.image = [UIImage imageWithImage:[UIImage imageNamed:@"noPhoto"] forSize:CGSizeMake(newImageWidth.floatValue, newHeight.floatValue)];
         [networkService downloadPhotoWithURL:post.photoURLArray[0][@"url"] withComplitionBlock:^(id  _Nullable image) {
-            self.postPhotoImageView.image = [UIImage imageWithImage:image forSize:CGSizeMake(newImageWidth.floatValue, newHeight.floatValue)];
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                UIImage *sizedImage = [UIImage imageWithImage:image
+                                                      forSize:CGSizeMake(newImageWidth.floatValue,
+                                                                         newHeight.floatValue)];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.postPhotoImageView.image = sizedImage;
+                });
+            });
         }];
     }
     else
@@ -54,10 +61,9 @@
     }
 }
 
-- (void)showOnlyPreviewOfText
+- (void)showOnlyPreviewOfTextForMaxCountOfLetters:(NSUInteger)maxCountOfLetters
 {
     NSString *text = self.postTextLabel.text;
-    NSInteger maxCountOfLetters = 200;
     
     if ([text length] > maxCountOfLetters)
     {

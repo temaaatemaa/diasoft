@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol PostsManagerDelegate
 
+@required
 - (void)postsDidLoad:(PostsManager *)postManager withPostsArray:(NSArray *)postsArray;
 
 @end

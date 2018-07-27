@@ -24,7 +24,7 @@ static NSString *const NameForAuthButton = @"Войти";
 static NSString *const NameForLogoutButton = @"Выйти";
 
 static CGFloat const EstimatedRowHeight = 200.f;
-
+static NSUInteger const PreviewTextCountOfLetters = 200;
 
 @interface NewsViewController ()<VKAutharisationDelegate,UITableViewDelegate,UITableViewDataSource,PostsManagerDelegate>
 
@@ -262,7 +262,7 @@ static CGFloat const EstimatedRowHeight = 200.f;
     Post *post = self.postsArray[indexPath.row];
 
     [cell setupCellForPost:post withNetworkService:self.networkService];
-    [cell showOnlyPreviewOfText];
+    [cell showOnlyPreviewOfTextForMaxCountOfLetters:PreviewTextCountOfLetters];
     
     return cell;
 }

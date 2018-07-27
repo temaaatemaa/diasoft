@@ -13,14 +13,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *const KeyForToken;
-extern NSString *const KeyForUserID;
 
 @protocol VKAutharisationDelegate
 
-
+@required
 - (void)autharisationDidDone:(VKAutharisation *)vkAutharisation
                    withToken:(NSString *)token;
 
+@required
 - (void)autharisationDidCancel:(VKAutharisation *)vkAutharisation;
 
 

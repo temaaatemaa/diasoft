@@ -12,19 +12,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Post : NSObject
 
-@property (nonatomic, strong) NSNumber *sourceID;
+@property (nonatomic, strong) NSNumber *sourceID;//Айди отправителя
 @property (nonatomic, strong) NSNumber *postID;
 @property (nonatomic, strong) NSNumber *unixDate;
-@property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSString *date;//Нормальное время (не unix)
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSArray<NSDictionary *> *photoURLArray;
+
+@property (nonatomic, copy) NSArray<NSDictionary *> *photoURLArray;//Массив информации о вложенных фото
+
 @property (nonatomic, strong) NSNumber *countOfLikes;
 @property (nonatomic, strong) NSNumber *countOfReposts;
 @property (nonatomic, strong) NSNumber *countOfComments;
 @property (nonatomic, strong) NSNumber *countOfViews;
 
 @property (nonatomic, copy) NSString *authorFirstName;
-@property (nonatomic, copy) NSString *authorSecondName;
+@property (nonatomic, copy) NSString *authorSecondName;//Если автор - сообщество, то пустая строка
 @property (nonatomic, copy) NSString *authorFotoURL;
 
 @end

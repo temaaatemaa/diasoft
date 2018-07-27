@@ -24,9 +24,15 @@
     
     [networkService downloadPhotoWithURL:fotoInformation[@"url"] withComplitionBlock:^(id  _Nullable image) {
         
-        self.postImage.image = [UIImage imageWithImage:image
-                                               forSize:CGSizeMake(newImageWidth.floatValue,
-                                                                  newHeight.floatValue)];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            UIImage *sizedImage = [UIImage imageWithImage:image
+                                                 forSize:CGSizeMake(newImageWidth.floatValue,
+                                                                    newHeight.floatValue)];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.postImage.image = sizedImage;
+            });
+        });
+        
     }];
 }
 @end

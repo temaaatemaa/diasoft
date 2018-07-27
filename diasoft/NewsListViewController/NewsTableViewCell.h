@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)setupCellForPost:(Post *)post withNetworkService:(NetworkService *)networkService;
-- (void)showOnlyPreviewOfText;
+- (void)showOnlyPreviewOfTextForMaxCountOfLetters:(NSUInteger)maxCountOfLetters;//Обрезать текст до maxCountOfLetters символов
 
 @end
 
