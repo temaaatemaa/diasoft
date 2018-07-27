@@ -15,7 +15,6 @@
 		239C1C65210871B300A11E65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C1C64210871B300A11E65 /* main.m */; };
 		239C1C6D2108750300A11E65 /* VKAutharisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C1C6C2108750300A11E65 /* VKAutharisation.m */; };
 		239C1C702108827100A11E65 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239C1C6F2108827100A11E65 /* SafariServices.framework */; };
-		239C1C72210882A800A11E65 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239C1C71210882A800A11E65 /* AuthenticationServices.framework */; };
 		239C1C752108CA5A00A11E65 /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C1C742108CA5A00A11E65 /* NewsTableViewCell.m */; };
 		239C1C782108CF0900A11E65 /* VKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C1C772108CF0900A11E65 /* VKRequest.m */; };
 		239C1C7B2108CFDE00A11E65 /* PostsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C1C7A2108CFDE00A11E65 /* PostsManager.m */; };
@@ -68,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				239C1C72210882A800A11E65 /* AuthenticationServices.framework in Frameworks */,
 				239C1C702108827100A11E65 /* SafariServices.framework in Frameworks */,
 				6F9F866CD4EAA44B9CD6C08F /* libPods-diasoft.a in Frameworks */,
 			);
