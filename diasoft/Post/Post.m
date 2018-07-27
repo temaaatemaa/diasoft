@@ -31,16 +31,24 @@
     return _text;
 }
 
-- (NSString *)date//Перевод юникс времени в обычное
+- (NSString *)date
 {
     if (!_unixDate)
     {
         return @"";
     }
-    double timestampval =  _unixDate.doubleValue;
+    
+    return [self getNormalDateFromUnix:_unixDate];
+}
+
+#pragma mark - Private Methods
+
+- (NSString *)getNormalDateFromUnix:(NSNumber *)unixDate
+{
+    double timestampval =  unixDate.doubleValue;
     NSTimeInterval timestamp = (NSTimeInterval)timestampval;
     NSDate *updatetimestamp = [NSDate dateWithTimeIntervalSince1970:timestamp];
-
+    
     NSDateFormatter *df_local = [[NSDateFormatter alloc] init];
     [df_local setTimeZone:[NSTimeZone timeZoneWithName:@"MSC"]];
     [df_local setDateFormat:@"HH:mm:ss dd.MM.yyyy"];
@@ -49,7 +57,6 @@
     
     return [NSString stringWithFormat:@"%@",ts_local_string];
 }
-
 
 #pragma mark - Override NSObject methods
 

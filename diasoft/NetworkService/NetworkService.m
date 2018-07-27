@@ -39,9 +39,10 @@
     {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url] options:NSDataReadingUncached error:nil];
-            [self.cash setObject:[UIImage imageWithData:data] forKey:url];
+            UIImage *image = [UIImage imageWithData:data];
+            [self.cash setObject:image forKey:url];
             dispatch_async(dispatch_get_main_queue(), ^{
-                complitionBlock([UIImage imageWithData:data]);
+                complitionBlock(image);
             });
         });
     }

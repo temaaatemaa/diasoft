@@ -39,13 +39,21 @@
     {
         NSNumber *imageHeight = ((NSNumber *)post.photoURLArray[0][@"height"]);
         NSNumber *imageWidth = ((NSNumber *)post.photoURLArray[0][@"width"]);
-        NSNumber *newImageWidth = @(self.contentView.frame.size.width - 10);
+        NSNumber *newImageWidth = @(self.contentView.frame.size.width);
         NSNumber *scale = @(imageWidth.floatValue / newImageWidth.floatValue);
         NSNumber *newHeight = @(imageHeight.floatValue / scale.floatValue);
         
-        self.postPhotoImageView.image = [UIImage imageWithImage:[UIImage imageNamed:@"noPhoto"] forSize:CGSizeMake(newImageWidth.floatValue, newHeight.floatValue)];
+        __block CGSize newSize = CGSizeMake(newImageWidth.floatValue,newHeight.floatValue);
+        UIImage *defaultImage = [UIImage imageNamed:@"noPhoto"];
+        
+        self.postPhotoImageView.image = [UIImage imageWithImage:defaultImage forSize:newSize];
+        
         [networkService downloadPhotoWithURL:post.photoURLArray[0][@"url"] withComplitionBlock:^(id  _Nullable image) {
-            self.postPhotoImageView.image = [UIImage imageWithImage:image forSize:CGSizeMake(newImageWidth.floatValue, newHeight.floatValue)];
+            
+            [UIImage resizeImage:image forSize:newSize OnGlobalQueueWithCmplitionOnMainThread:^(id  _Nullable image) {
+                self.postPhotoImageView.image = image;
+            }];
+            
         }];
     }
     else
@@ -54,10 +62,9 @@
     }
 }
 
-- (void)showOnlyPreviewOfText
+- (void)showOnlyPreviewOfTextForMaxCountOfLetters:(NSUInteger)maxCountOfLetters
 {
     NSString *text = self.postTextLabel.text;
-    NSInteger maxCountOfLetters = 200;
     
     if ([text length] > maxCountOfLetters)
     {
