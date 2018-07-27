@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 
-- (void)setupCellWithUrl:(NSString *)url forPost:(Post *)post withNetworkService:(NetworkService *)networkService;
+- (void)setupCellWithFotoInfo:(NSDictionary *)fotoInformation forPost:(Post *)post withNetworkService:(NetworkService *)networkService;
 
 @end
 

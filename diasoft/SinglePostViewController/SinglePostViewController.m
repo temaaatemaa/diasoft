@@ -76,13 +76,15 @@ static CGFloat const EstimatedRowHeight = 200.f;
     {
         NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellForText"];
         [cell setupCellForPost:self.post withNetworkService:self.networkService];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     
     ImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellForImage"];
     
-    NSString *urlForFoto = self.post.photoURLArray[indexPath.row-1][@"url"];
-    [cell setupCellWithUrl:urlForFoto forPost:self.post withNetworkService:self.networkService];
+    NSDictionary *fotoInfo = self.post.photoURLArray[indexPath.row-1];
+    [cell setupCellWithFotoInfo:fotoInfo forPost:self.post withNetworkService:self.networkService];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
     

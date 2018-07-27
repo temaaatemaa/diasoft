@@ -17,6 +17,9 @@
 
 - (void)setupCellForPost:(Post *)post withNetworkService:(NetworkService *)networkService
 {
+    UIView *selectionBackgroundView = [UIView new];
+    selectionBackgroundView.backgroundColor = [UIColor colorWithRed:204.f/255.f green:220.f/255.f blue:1 alpha:1];
+    self.selectedBackgroundView = selectionBackgroundView;
     
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", post.authorFirstName, post.authorSecondName];
     self.dateLabel.text = post.date;
@@ -63,4 +66,5 @@
         self.postTextLabel.text = text;
     }
 }
+
 @end

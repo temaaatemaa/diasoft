@@ -20,8 +20,8 @@
 #import "SinglePostViewController.h"
 
 
-static NSString *const NameForAuthButton = @"Auth";
-static NSString *const NameForLogoutButton = @"Logout";
+static NSString *const NameForAuthButton = @"Войти";
+static NSString *const NameForLogoutButton = @"Выйти";
 
 static CGFloat const EstimatedRowHeight = 200.f;
 
@@ -110,7 +110,6 @@ static CGFloat const EstimatedRowHeight = 200.f;
 #pragma mark - Buttons
 
 - (IBAction)vkAutharisationButtonClicked:(id)sender {
-    NSLog(@"Clicked");
     if ([self.vkAutharisationButton.title isEqualToString:NameForAuthButton])
     {
         [self.vkAutharisation autharisation];
@@ -209,7 +208,7 @@ static CGFloat const EstimatedRowHeight = 200.f;
 
 #pragma mark - VKAutharisationDelegate
 
-- (void)autharisationDidDone:(nonnull VKAutharisation *)vkAutharisation withToken:(nonnull NSString *)token withUserId:(nonnull NSString *)userId
+- (void)autharisationDidDone:(nonnull VKAutharisation *)vkAutharisation withToken:(nonnull NSString *)token
 {
     [self changeAutharisationButtonName];
 }
@@ -258,7 +257,7 @@ static CGFloat const EstimatedRowHeight = 200.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testCell"];
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell"];
 
     Post *post = self.postsArray[indexPath.row];
 
@@ -270,6 +269,8 @@ static CGFloat const EstimatedRowHeight = 200.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
                                 @"Main" bundle:[NSBundle mainBundle]];
     SinglePostViewController *nextViewController = [storyboard instantiateViewControllerWithIdentifier:@"SinglePostViewController"];
@@ -282,7 +283,6 @@ static CGFloat const EstimatedRowHeight = 200.f;
 
 -(void)postsDidLoad:(PostsManager *)postManager withPostsArray:(NSArray *)postsArray
 {
-    NSLog(@"postsDidLoad");
     self.postsArray = [self.postsArray arrayByAddingObjectsFromArray:postsArray];
     self.postsArray = [self makeUniqueAndSortedArray:self.postsArray];
     
